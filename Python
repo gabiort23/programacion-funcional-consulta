@@ -1,1 +1,37 @@
+from dataclasses import dataclass
 
+@dataclass
+class Producto:
+    nombre: str
+    categoria: str
+    precio: float
+    stock: int
+
+productos = [
+    Producto("Laptop", "Electrónica", 1200.0, 5), 
+    Producto("Mouse", "Electrónica", 25.0, 50), 
+    Producto("Teclado", "Electrónica", 45.0, 30),       
+    Producto("Monitor", "Electrónica", 300.0, 12), 
+    Producto("Silla Gamer", "Muebles", 250.0, 8), 
+    Producto("Escritorio", "Muebles", 180.0, 4), 
+    Producto("Lámpara", "Hogar", 15.0, 60), 
+    Producto("Cuaderno", "Papelería", 3.5, 100), 
+    Producto("Esfero", "Papelería", 1.2, 200), 
+    Producto("Mochila", "Accesorios", 50.0, 15)
+]
+
+# 3.1 Selección (filter con lambda)
+res_seleccion = list(filter(lambda p: p.categoria == "Electrónica" and p.precio > 100.0, productos))
+print("Selección:", res_seleccion)
+
+# 3.2 Transformación (map con lambda)
+res_transformacion = list(map(lambda p: f"{p.nombre}: ${p.precio * 1.15:.2f}", productos))
+print("Transformación:", res_transformacion)
+
+# 3.3 Extremos (min con key lambda)
+res_extremos = min(productos, key=lambda p: p.stock)
+print("Extremos (Menor stock):", res_extremos)
+
+# 3.4 Conteo (sum con generador)
+res_conteo = sum(1 for p in productos if p.stock < 10)
+print("Conteo (Stock crítico < 10):", res_conteo)
