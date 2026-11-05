@@ -24,9 +24,9 @@ public class Main {
             .collect(Collectors.toList());
         System.out.println("Selección: " + resSeleccion);
 
-        // 3.2 Transformación (map)
+        // 3.2 Transformación (map con formato limpio de precios)
         List<String> resTransformacion = productos.stream()
-            .map(p -> p.nombre() + ": $" + (p.precio() * 1.15))
+            .map(p -> String.format("%s: $%.2f", p.nombre(), p.precio() * 1.15))
             .collect(Collectors.toList());
         System.out.println("Transformación: " + resTransformacion);
 
