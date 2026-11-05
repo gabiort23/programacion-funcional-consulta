@@ -65,8 +65,9 @@ val esMayorQueLimite = (monto: Double) => monto > limite
 
 ## Parte 3 – Aplicar: ¿en que problemas sirven las funciones anonimas?
 Para garantizar comparaciones homogéneas, utilizaremos la misma colección de datos de ejemplo en Scala, Java y Python:
+```
 Entidad base: 
-```Producto(nombre: String, categoria: String, precio: Double, stock: Int)
+Producto(nombre: String, categoria: String, precio: Double, stock: Int)
 Dataset inicial (10 productos):
 Laptop (Electrónica, $1200.0, 5)
 Mouse (Electrónica, $25.0, 50)
@@ -179,8 +180,9 @@ res_python = list(map(lambda p: f"{p.nombre}: ${p.precio * 1.15}", productos))
 Situación real: Un gerente de compras quiere identificar el producto con menor existencias en stock para realizar una reorden urgente
 
 ### Scala
+```
 val resScala = productos.minBy(p => p.stock)
-
+```
 ### Java
 ```
 Producto resJava = productos.stream()
@@ -299,3 +301,11 @@ Paso 1 (filter): Se aplica un filtro lógico para reducir el conjunto de 10 prod
 Paso 2 (map): Toma la lista resultante de objetos Producto y los transforma extrayendo exclusivamente el atributo nombre, convirtiendo la estructura en una lista de cadenas (List[String] con valores "Mouse", "Teclado", "Monitor").
 
 Paso 3 (sortBy): Utiliza la función nueva sortBy con identity para ordenar alfabéticamente los nombres de forma ascendente, obteniendo el orden final limpio: List(Monitor, Mouse, Teclado).
+## Parte 5 – Comparar y concluir
+| Criterio | Scala | Java (Streams API) | Python |
+| :--- | :--- | :--- | :--- |
+| **Sintaxis de la lambda** | Concisa: `p => p.precio > 10` o `_.precio > 10` | Media: `p -> p.getPrecio() > 10` | Concisa/Limitada: `lambda p: p.precio > 10` |
+| **Cómo se declara el tipo** | Inferencia estática de tipos muy potente. | Inferencia parcial (`var`), fuertemente tipado en interfaces funcionales. | Dinámico. No requiere declaración de tipos. |
+| **Operaciones con listas** | Nativas e integradas directamente en las colecciones (`List`, `Vector`). | A través de la API Stream (`.stream().filter().collect()`). | Funciones globales (`map`, `filter`), expresiones lambda o List Comprehensions. |
+| **Restricciones del lenguaje** | Pocas o ningunas en estilo funcional. | Verboso; requiere envolver/desenvolver en Streams y recolectores. | Las lambdas en Python están restringidas a una sola expresión (no admiten bloques). |
+| **Legibilidad (Opinión)** | Alta: La sintaxis expresiva y encadenable parece matemática pura. | Media: La necesidad de `.stream()` y `.collect()` agrega ruido sintáctico. | Alta para cosas simples, Baja al encadenar funciones funcionales puras sin comprehensions. |
