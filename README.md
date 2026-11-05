@@ -325,3 +325,12 @@ En Python: Para acumular me tocó importar a fuerzas el módulo functools (reduc
 En lo personal, este trabajo me ayudó a entender que las funciones anónimas son herramientas sumamente potentes para manipular listas, ya que evitan los bucles tradicionales (for o while) y permiten declarar con precisión lógica y directa qué transformación o filtro se desea aplicar sobre los datos.
 
 En el mundo real, esta misma lógica funcional es la que permite a plataformas globales como PayPal procesar y filtrar millones de transacciones por segundo en busca de fraudes, o a Uber calcular tarifas y filtrar conductores disponibles de forma instantánea. El uso de funciones anónimas combinadas con colecciones inmutables garantiza no solo un código más limpio y legible, sino también la seguridad y concurrencia necesarias para sistemas de alto rendimiento a gran escala.
+
+# Prácticas de Programación Funcional
+
+| Lenguaje / Script | Evidencia de Ejecución |
+| :--- | :--- |
+| **Python** | ![Python](Imgs/EjecucionPython.PNG) |
+| **Java** | ![Java](Imgs/EjecucionJava.PNG) |
+| **Scala (Main)** | ![Scala Main](Imgs/EjecucionScala.PNG) |
+| **Scala (Operaciones)** | ![Scala Operaciones](Imgs/EjecucionOperaciones.PNG) |
