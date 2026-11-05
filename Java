@@ -1,1 +1,37 @@
+'''import java.util.*;
+import java.util.stream.Collectors;
 
+record Estudiante(String nombre, String carrera, int nota) {}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Estudiante> estudiantes = List.of(
+            new Estudiante("Ana", "Sistemas", 85),
+            new Estudiante("Bruno", "Industrial", 72),
+            new Estudiante("Carla", "Sistemas", 91),
+            new Estudiante("Diego", "Civil", 64),
+            new Estudiante("Elena", "Industrial", 88)
+        );
+
+        // 1. Mostrar nombres de estudiantes de la carrera "Civil"
+        System.out.println("--- Estudiantes de Civil ---");
+        estudiantes.stream()
+            .filter(e -> e.carrera().equals("Civil"))
+            .map(Estudiante::nombre)
+            .forEach(System.out::println);
+
+        // 2. Suma de notas de la carrera "Industrial"
+        int sumaIndustrial = estudiantes.stream()
+            .filter(e -> e.carrera().equals("Industrial"))
+            .mapToInt(Estudiante::nota)
+            .sum();
+        System.out.println("\nSuma notas Industrial: " + sumaIndustrial);
+
+        // 3. Estudiante con la nota más alta (SIN .get())
+        Estudiante mejor = estudiantes.stream()
+            .max(Comparator.comparingInt(Estudiante::nota))
+            .orElse(new Estudiante("Ninguno", "N/A", 0));
+            
+        System.out.println("\nMejor estudiante: " + mejor);
+    }
+}
