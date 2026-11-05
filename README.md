@@ -302,6 +302,7 @@ Paso 2 (map): Toma la lista resultante de objetos Producto y los transforma extr
 
 Paso 3 (sortBy): Utiliza la función nueva sortBy con identity para ordenar alfabéticamente los nombres de forma ascendente, obteniendo el orden final limpio: List(Monitor, Mouse, Teclado).
 ## Parte 5 – Comparar y concluir
+### 5.1 Scala, Java y Python frente a frente
 | Criterio | Scala | Java (Streams API) | Python |
 | :--- | :--- | :--- | :--- |
 | **Sintaxis de la lambda** | Concisa: `p => p.precio > 10` o `_.precio > 10` | Media: `p -> p.getPrecio() > 10` | Concisa/Limitada: `lambda p: p.precio > 10` |
@@ -309,3 +310,18 @@ Paso 3 (sortBy): Utiliza la función nueva sortBy con identity para ordenar alfa
 | **Operaciones con listas** | Nativas e integradas directamente en las colecciones (`List`, `Vector`). | A través de la API Stream (`.stream().filter().collect()`). | Funciones globales (`map`, `filter`), expresiones lambda o List Comprehensions. |
 | **Restricciones del lenguaje** | Pocas o ningunas en estilo funcional. | Verboso; requiere envolver/desenvolver en Streams y recolectores. | Las lambdas en Python están restringidas a una sola expresión (no admiten bloques). |
 | **Legibilidad (Opinión)** | Alta: La sintaxis expresiva y encadenable parece matemática pura. | Media: La necesidad de `.stream()` y `.collect()` agrega ruido sintáctico. | Alta para cosas simples, Baja al encadenar funciones funcionales puras sin comprehensions. |
+
+### ¿En qué lenguaje me pareció más natural resolver los problemas?
+
+Para mí, Scala fue el más natural de todos. Como la programación funcional viene integrada desde la base, las colecciones ya traen listos todos los métodos (filter, map, minBy, foldLeft) y se pueden encadenar súper fácil sin enredarse. Además, con los case class definir la estructura de los productos toma dos líneas.
+
+### ¿En qué tipo de problema encontré más diferencias entre lenguajes y por qué?
+
+Donde más noté la diferencia fue en los cálculos de Acumulación (foldLeft / reduce) y Extremos (minBy / min):
+En Java: Aunque los streams son ordenados, hay que escribir bastante más código repetitivo. Para sumar tuve que usar un stream numérico aparte (mapToDouble) o configurar comparadores explícitos, además de lidiar con los Optional. Se siente mucho más estricto y cuadrado.
+En Python: Para acumular me tocó importar a fuerzas el módulo functools (reduce), lo cual se siente un poco metido con calzador porque en el día a día Python prefiere las comprensiones de listas. Eso sí, para sacar mínimos y máximos la función min() con el parámetro key= y una lambda es súper cómoda, aunque rompe con la idea de encadenar métodos como lo hacemos en Scala y Java.
+
+### 5.2 Conclusión 
+En lo personal, este trabajo me ayudó a entender que las funciones anónimas son súper útiles para manipular listas, ya que evitan los típicos bucles largos y nos dejan ir directo a lo que necesitamos hacer con los datos.
+
+Viendo esto en el mundo real, esta misma lógica es la que usa una herramienta tan potente como Apache Spark. Poder mandar funciones anónimas de un lado a otro nos ahorra un montón de código y es justo lo que permite que sistemas grandes procesen información de manera masiva y en paralelo
