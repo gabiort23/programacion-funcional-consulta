@@ -40,30 +40,30 @@ val conductoresCercanos = conductores
   .filter(c => c.distanciaKm <= 3.0 && c.disponible)
   .map(c => tarifaBase * c.multiplicadorZona)
   
-## Parte 2 – Entender: ¿qu´e es una funci´on an´onima?
-### Responde con tus palabras y apoya cada respuesta con un fragmento corto de c´odigo:
+## Parte 2 – Entender: ¿que es una funcion anonima?
+### Responde con tus palabras y apoya cada respuesta con un fragmento corto de codigo:
 
-### ¿Qu´e es una funci´on an´onima y de d´onde viene el nombre lambda?
+### ¿Que es una funcion anonima y de donde viene el nombre lambda?
  Es una función que no tiene un nombre asignado y se escribe directamente en el lugar donde se va a utilizar. Su nombre proviene del Cálculo Lambda (λ-calculus) de Alonzo Church.
  
-### ¿En qu´e se diferencia de una funci´on nombrada? Escribe la misma l´ogica de ambas formas.
+### ¿En que se diferencia de una funcion nombrada? Escribe la misma logica de ambas formas.
 La función nombrada se declara con un identificador (def miFuncion()), mientras que la anónima se define como una expresión directa (n => n * 2).
 // Función nombrada
 def esPar(n: Int): Boolean = n % 2 == 0
 // Función anónima equivalente
 (n: Int) => n % 2 == 0
 
-### ¿Qu´e significa que las funciones sean ciudadanos de primera clase? ¿Por qu´e eso permite pasar una lambda a map o filter?
+### ¿Que significa que las funciones sean ciudadanos de primera clase? ¿Por que eso permite pasar una lambda a map o filter?
 Significa que las funciones pueden tratarse como cualquier otro valor: se pueden guardar en variables, pasarse como argumentos a otras funciones o retornarse desde ellas.
 
-### ¿Qu´e es un closure? Muestra una lambda que use una variable definida fuera de ella.
+### ¿Que es un closure? Muestra una lambda que use una variable definida fuera de ella.
 Es una función anónima que captura o "recuerda" una variable declarada fuera de su propio cuerpo.
 val limite = 100
 // La lambda accede a 'limite', variable definida fuera de su cuerpo
 val esMayorQueLimite = (monto: Double) => monto > limite
 
 
-## Parte 3 – Aplicar: ¿en qu´e problemas sirven las funciones an´onimas?
+## Parte 3 – Aplicar: ¿en que problemas sirven las funciones anonimas?
 Para garantizar comparaciones homogéneas, utilizaremos la misma colección de datos de ejemplo en Scala, Java y Python:
 Entidad base: 
 Producto(nombre: String, categoria: String, precio: Double, stock: Int)
@@ -202,9 +202,7 @@ long resJava = productos.stream()
 System.out.println(resJava);
     
 ### Python
-# Usando sum con una función generadora / lambda en map
-res_python = sum(1 for p in productos if p.stock < 10)
-# O usando len + filter: len(list(filter(lambda p: p.stock < 10, productos)))
+res_python = sum(1 for p in productos if p.stock < 10) 
 
 print(res_python)
 
