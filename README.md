@@ -322,6 +322,6 @@ En Java: Aunque los streams son ordenados, hay que escribir bastante más códig
 En Python: Para acumular me tocó importar a fuerzas el módulo functools (reduce), lo cual se siente un poco metido con calzador porque en el día a día Python prefiere las comprensiones de listas. Eso sí, para sacar mínimos y máximos la función min() con el parámetro key= y una lambda es súper cómoda, aunque rompe con la idea de encadenar métodos como lo hacemos en Scala y Java.
 
 ### 5.2 Conclusión 
-En lo personal, este trabajo me ayudó a entender que las funciones anónimas son súper útiles para manipular listas, ya que evitan los típicos bucles largos y nos dejan ir directo a lo que necesitamos hacer con los datos.
+En lo personal, este trabajo me ayudó a entender que las funciones anónimas son herramientas sumamente potentes para manipular listas, ya que evitan los bucles tradicionales (for o while) y permiten declarar con precisión lógica y directa qué transformación o filtro se desea aplicar sobre los datos.
 
-Viendo esto en el mundo real, esta misma lógica es la que usa una herramienta tan potente como Apache Spark. Poder mandar funciones anónimas de un lado a otro nos ahorra un montón de código y es justo lo que permite que sistemas grandes procesen información de manera masiva y en paralelo
+En el mundo real, esta misma lógica funcional es la que permite a plataformas globales como PayPal procesar y filtrar millones de transacciones por segundo en busca de fraudes, o a Uber calcular tarifas y filtrar conductores disponibles de forma instantánea. El uso de funciones anónimas combinadas con colecciones inmutables garantiza no solo un código más limpio y legible, sino también la seguridad y concurrencia necesarias para sistemas de alto rendimiento a gran escala.
