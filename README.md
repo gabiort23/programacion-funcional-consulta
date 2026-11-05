@@ -24,7 +24,7 @@ Utilizan funciones anónimas dentro de operaciones sobre colecciones en tiempo r
 ```val alertasFraude = streamTransacciones
   .filter(tx => tx.monto > 5000.0 && tx.ubicacion != tx.usuario.paisOrigen)
   .map(tx => Alerta(tx.id, "Posible fraude detectado"))
-
+```
 ## Segundo caso: Uber / Cálculo de Tarifas y Rutas en Tiempo Real
 ### ¿Qué problema resuelven?
 Procesar solicitudes de miles de usuarios para filtrar conductores cercanos, calcular tarifas dinámicas y transformar coordenadas GPS al instante.
@@ -36,7 +36,7 @@ Scala y Java con procesamiento distribuido.
 Utilizan funciones de orden superior (filter y map) para aplicar reglas de precios y distancias de forma limpia y rápida, sin alterar los datos originales de los mapas o usuarios.
 
 ### Ejemplo de código:
-```val conductoresCercanos = conductores
+  val conductoresCercanos = conductores
   .filter(c => c.distanciaKm <= 3.0 && c.disponible)
   .map(c => tarifaBase * c.multiplicadorZona)
   
@@ -48,7 +48,7 @@ Utilizan funciones de orden superior (filter y map) para aplicar reglas de preci
  
 ### ¿En que se diferencia de una funcion nombrada? Escribe la misma logica de ambas formas.
 La función nombrada se declara con un identificador (def miFuncion()), mientras que la anónima se define como una expresión directa (n => n * 2).
-```// Función nombrada
+// Función nombrada
 def esPar(n: Int): Boolean = n % 2 == 0
 // Función anónima equivalente
 (n: Int) => n % 2 == 0
