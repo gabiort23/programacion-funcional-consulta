@@ -157,8 +157,9 @@ productos = [
 
 ]
 
-res_python = list(filter(lambda p: p.categoria == "Electrónica" and p.precio > 100.0, productos))
 ```
+res_python = list(filter(lambda p: p.categoria == "Electrónica" and p.precio > 100.0, productos))
+
 ### 3.2 Tipo 2: Transformación (map)
 Situación real: El sistema de inventario necesita calcular el precio con un 15% de impuesto IVA incluido para cada producto y devolver una lista de cadenas con formato "Nombre: $PrecioConIVA".print(res_python)
 
